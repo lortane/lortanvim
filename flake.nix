@@ -163,6 +163,7 @@
               extra = [
                 oil-nvim
                 nvim-web-devicons
+                todo-comments-nvim
               ];
             };
             # You can retreive information from the
