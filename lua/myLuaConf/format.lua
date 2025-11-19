@@ -1,38 +1,49 @@
-require('lze').load {
-  {
-    "conform.nvim",
-    for_cat = 'format',
-    -- cmd = { "" },
-    -- event = "",
-    -- ft = "",
-    keys = {
-      { "<leader>FF", desc = "[F]ormat [F]ile" },
-    },
-    -- colorscheme = "",
-    after = function (plugin)
-      local conform = require("conform")
+require("lze").load({
+	{
+		"conform.nvim",
+		for_cat = "format",
+		keys = {
+			{ "<leader>FF", desc = "[F]ormat [F]ile" },
+		},
+		after = function(plugin)
+			local conform = require("conform")
 
-      conform.setup({
-        formatters_by_ft = {
-          -- NOTE: download some formatters in lspsAndRuntimeDeps
-          -- and configure them here
-          -- lua = { "stylua" },
-          -- go = { "gofmt", "golint" },
-          -- templ = { "templ" },
-          -- Conform will run multiple formatters sequentially
-          -- python = { "isort", "black" },
-          -- Use a sub-list to run only the first available formatter
-          -- javascript = { { "prettierd", "prettier" } },
-        },
-      })
+			conform.setup({
+				-- This matches your old NixVim config
+				format_on_save = {
+					lsp_fallback = true, -- Try LSP first, then external formatters
+					timeout_ms = 500,
+				},
+				notify_on_error = true,
 
-      vim.keymap.set({ "n", "v" }, "<leader>FF", function()
-        conform.format({
-          lsp_fallback = true,
-          async = false,
-          timeout_ms = 1000,
-        })
-      end, { desc = "[F]ormat [F]ile" })
-    end,
-  },
-}
+				formatters_by_ft = {
+					-- These are FALLBACK formatters (same as your old config)
+					cpp = { "clang-format" },
+					c = { "clang-format" },
+					nix = { "nixfmt" },
+					lua = { "stylua" }, -- Fallback for Lua if LSP fails
+				},
+			})
+
+			vim.keymap.set({ "n", "v" }, "<leader>FF", function()
+				conform.format({
+					lsp_fallback = true, -- Use LSP first
+					async = true,
+					timeout_ms = 500,
+				})
+			end, { desc = "[F]ormat [F]ile" })
+
+			-- Also add the format-on-save from your old config
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				pattern = "*",
+				callback = function(args)
+					conform.format({
+						lsp_fallback = true,
+						async = false,
+						timeout_ms = 500,
+					})
+				end,
+			})
+		end,
+	},
+})

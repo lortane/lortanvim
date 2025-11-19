@@ -129,17 +129,22 @@
             };
             nix = with pkgs; [
               nixd # Nix LSP server
-              alejandra # Formatter
               nixfmt-rfc-style
-              statix # Linter
-              deadnix # Find unused code
             ];
-            go = with pkgs; [
-              gopls
-              gotools
-              go-tools
-              gccgo
+            cpp = with pkgs; [
+              clang-tools
             ];
+            lua = with pkgs; [
+              lua-language-server
+              stylua
+            ];
+
+            # go = with pkgs; [
+            #   gopls
+            #   gotools
+            #   go-tools
+            #   gccgo
+            # ];
             # and easily check if they are included in lua
             format = with pkgs; [
             ];
@@ -197,6 +202,9 @@
               ];
               go = [ nvim-dap-go ];
             };
+            lua = with pkgs.vimPlugins; [
+              lazydev-nvim
+            ];
             lint = with pkgs.vimPlugins; [
               nvim-lint
             ];
@@ -359,7 +367,7 @@
               # or, whatever you named the package definition in the packageDefinitions set.
               # WARNING: MAKE SURE THESE DONT CONFLICT WITH OTHER INSTALLED PACKAGES ON YOUR PATH
               # That would result in a failed build, as nixos and home manager modules validate for collisions on your path
-              aliases = [ "vimcat" ];
+              aliases = [ ];
 
               # explained below in the `regularCats` package's definition
               # OR see :help nixCats.flake.outputs.settings for all of the settings available
@@ -376,6 +384,8 @@
               lint = true;
               format = true;
               nix = true;
+              cpp = true;
+              lua = true;
 
               # enabling this category will enable the go category,
               # and ALSO debug.go and debug.default due to our extraCats in categoryDefinitions.
