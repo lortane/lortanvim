@@ -171,14 +171,35 @@ require('lze').load {
           component_separators = '|',
           section_separators = '',
         },
-        sections = {
-          lualine_c = {
-            {
-              'filename', path = 1, status = true,
-            },
-          },
-        },
-        inactive_sections = {
+sections = {
+    lualine_a = {'mode'},
+    lualine_b = {
+      'branch',
+      {
+        'diff',
+        symbols = {
+          added = ' ',
+          modified = ' ',
+          removed = ' '
+        }
+      }
+    },
+    lualine_c = {
+      {
+        'diagnostics',
+symbols = {
+          error = ' ',      -- Filled circle X
+          warn = ' ',       -- Filled triangle exclamation
+          info = ' ',       -- Filled circle i
+          hint = '󰌵 '        -- Filled lightbulb
+        }
+     }
+    },
+    lualine_x = {'filetype', 'filename'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+       inactive_sections = {
           lualine_b = {
             {
               'filename', path = 3, status = true,
@@ -206,13 +227,13 @@ require('lze').load {
     after = function (plugin)
       require('gitsigns').setup({
         -- See `:help gitsigns.txt`
-        signs = {
-          add = { text = '+' },
-          change = { text = '~' },
-          delete = { text = '_' },
-          topdelete = { text = '‾' },
-          changedelete = { text = '~' },
-        },
+        -- signs = {
+        --   add = { text = '+' },
+        --   change = { text = '~' },
+        --   delete = { text = '_' },
+        --   topdelete = { text = '‾' },
+        --   changedelete = { text = '~' },
+        -- },
         on_attach = function(bufnr)
           local gs = package.loaded.gitsigns
 
