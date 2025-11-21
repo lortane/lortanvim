@@ -99,7 +99,7 @@ require("lze").load({
 		for_cat = "cpp",
 		lsp = {
 			filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-			capabilities = vim.lsp.protocol.make_client_capabilities(), -- Basic capabilities
+			capabilities = vim.lsp.protocol.make_client_capabilities(),
 			cmd = {
 				"clangd",
 				"--background-index",
@@ -115,6 +115,9 @@ require("lze").load({
 				completeUnimported = true,
 				semanticHighlighting = true,
 			},
+			on_attach = function(client, bufnr)
+				require("myLuaConf.LSPs.on_attach")(client, bufnr)
+			end,
 		},
 	},
 	{
