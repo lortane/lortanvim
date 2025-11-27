@@ -69,7 +69,7 @@ require("lze").load({
 	{ import = "myLuaConf.plugins.completion" },
 	{
 		"todo-comments.nvim",
-		for_cat = "general.extra", -- or "general.extra" if you prefer
+		for_cat = "general.extra",
 		event = "DeferredUIEnter",
 		after = function(plugin)
 			require("todo-comments").setup({
@@ -91,18 +91,9 @@ require("lze").load({
 		end,
 		keys = {
 			{
-				"]t",
-				function()
-					require("todo-comments").jump_next()
-				end,
-				desc = "Next todo comment",
-			},
-			{
-				"[t",
-				function()
-					require("todo-comments").jump_prev()
-				end,
-				desc = "Previous todo comment",
+				"<leader>st",
+				":TodoTelescope<CR>",
+				desc = "[S]earch [T]ODO comments",
 			},
 		},
 	},
