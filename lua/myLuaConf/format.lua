@@ -3,7 +3,7 @@ require("lze").load({
 		"conform.nvim",
 		for_cat = "format",
 		keys = {
-			{ "<leader>FF", desc = "[F]ormat [F]ile" },
+			{ "<leader>f", desc = "[f]ormat file" },
 		},
 		after = function(plugin)
 			local conform = require("conform")
@@ -25,25 +25,13 @@ require("lze").load({
 				},
 			})
 
-			vim.keymap.set({ "n", "v" }, "<leader>FF", function()
+			vim.keymap.set({ "n", "v" }, "<leader>f", function()
 				conform.format({
 					lsp_fallback = true, -- Use LSP first
 					async = true,
 					timeout_ms = 500,
 				})
-			end, { desc = "[F]ormat [F]ile" })
-
-			-- Also add the format-on-save from your old config
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				pattern = "*",
-				callback = function(args)
-					conform.format({
-						lsp_fallback = true,
-						async = false,
-						timeout_ms = 500,
-					})
-				end,
-			})
+			end, { desc = "[f]ormat file" })
 		end,
 	},
 })
