@@ -129,7 +129,7 @@
             };
             nix = with pkgs; [
               nixd # Nix LSP server
-              nixfmt-rfc-style
+              nixfmt
             ];
             cpp = with pkgs; [
               clang-tools
