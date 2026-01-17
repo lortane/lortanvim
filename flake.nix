@@ -62,12 +62,14 @@
               nvim-lspconfig
               blink-cmp
               blink-compat
+              cmp-cmdline
               luasnip
               fidget-nvim
               lazydev-nvim
               comment-nvim
               nvim-surround
               colorful-menu-nvim
+              conform-nvim
             ];
             ui = with pkgs.vimPlugins; [
               lualine-nvim

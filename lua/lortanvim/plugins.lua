@@ -29,7 +29,7 @@ lze.load({
 	-----------------------------------------------------------------------------
 	{
 		"conform.nvim",
-		for_cat = "format",
+		for_cat = "lsp",
 		keys = {
 			{ "<leader>f", desc = "[f]ormat file" },
 		},
@@ -241,12 +241,12 @@ lze.load({
 	-----------------------------------------------------------------------------
 	{
 		"blink.cmp",
-		for_cat = "lsp", -- Completion is core to the LSP experience
+		for_cat = "lsp",
 		event = "DeferredUIEnter",
 		load = function(name)
 			-- Load dependencies and their 'after' directories
 			vim.cmd.packadd(name)
-			vim.cmd.packadd("blink.compat")
+			vim.cmd.packadd("blink-compat")
 			vim.cmd.packadd("cmp-cmdline")
 			vim.cmd.packadd("luasnip")
 			vim.cmd.packadd("colorful-menu.nvim")

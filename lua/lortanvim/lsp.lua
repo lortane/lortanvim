@@ -76,12 +76,15 @@ lze.load({
 		for_cat = "lsp",
 		on_require = { "lspconfig" },
 		lsp = function(plugin)
-			require("lspconfig")[plugin.name].setup(vim.tbl_extend("force", {
-				on_attach = on_attach,
-			}, plugin.lsp or {}))
+			vim.lsp.config(
+				plugin.name,
+				vim.tbl_extend("force", {
+					on_attach = on_attach,
+				}, plugin.lsp or {})
+			)
+			vim.lsp.enable(plugin.name)
 		end,
 	},
-
 	-- Lua Support
 	{
 		"lazydev.nvim",
