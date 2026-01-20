@@ -246,7 +246,7 @@ lze.load({
 		load = function(name)
 			-- Load dependencies and their 'after' directories
 			vim.cmd.packadd(name)
-			vim.cmd.packadd("blink-compat")
+			vim.cmd.packadd("blink.compat")
 			vim.cmd.packadd("cmp-cmdline")
 			vim.cmd.packadd("luasnip")
 			vim.cmd.packadd("colorful-menu.nvim")
@@ -268,6 +268,14 @@ lze.load({
 			require("blink.cmp").setup({
 				keymap = { preset = "default" },
 				signature = { enabled = true },
+
+				fuzzy = {
+					sorts = {
+						"exact",
+						"score",
+						"sort_text",
+					},
+				},
 
 				-- Use Colorful Menu for better looks
 				completion = {
@@ -292,6 +300,9 @@ lze.load({
 				-- Command line completion (for : commands)
 				cmdline = {
 					enabled = true,
+					completion = {
+						menu = { auto_show = true },
+					},
 					sources = function()
 						local type = vim.fn.getcmdtype()
 						if type == "/" or type == "?" then
