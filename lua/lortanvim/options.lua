@@ -61,3 +61,24 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
+
+-- [[ Folds ]] --
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+-- Start with all folds open
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+
+-- Clean up the fold appearance
+vim.opt.fillchars = {
+	foldopen = "",
+	foldclose = "",
+	fold = " ", -- Removes the dots/dashes from the fold line
+	foldsep = " ",
+}
+
+-- Visual Indicators in the gutter
+vim.opt.foldcolumn = "1"
+vim.opt.statuscolumn =
+	"%=%l%s%#FoldColumn#%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? ' ' : ' ') : '  ') : '  '}"

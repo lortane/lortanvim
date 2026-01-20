@@ -2,29 +2,6 @@ local lze = require("lze")
 
 lze.load({
 	-----------------------------------------------------------------------------
-	-- LINTING (Nvim-lint)
-	-----------------------------------------------------------------------------
-	{
-		"nvim-lint",
-		for_cat = "lint",
-		event = "FileType",
-		after = function()
-			local lint = require("lint")
-
-			-- Add linters here as you install them via Nix
-			lint.linters_by_ft = {
-				-- Example: nix = { 'statix' },
-			}
-
-			-- Automatically run linter on save
-			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-				callback = function()
-					lint.try_lint()
-				end,
-			})
-		end,
-	},
-	-----------------------------------------------------------------------------
 	-- FORMATTING (conform.nvim)
 	-----------------------------------------------------------------------------
 	{
@@ -61,7 +38,7 @@ lze.load({
 	{
 		"nvim-treesitter",
 		for_cat = "treesitter", -- Matches the category in your flake
-		event = "DeferredUIEnter",
+		event = "BufReadPost",
 		load = function(name)
 			vim.cmd.packadd(name)
 			vim.cmd.packadd("nvim-treesitter-textobjects")
