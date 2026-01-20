@@ -30,6 +30,7 @@ lze.load({
 	{
 		"conform.nvim",
 		for_cat = "lsp",
+		event = { "BufReadPre", "BufNewFile" },
 		keys = {
 			{ "<leader>f", desc = "[f]ormat file" },
 		},
