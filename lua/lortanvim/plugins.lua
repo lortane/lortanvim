@@ -37,7 +37,7 @@ lze.load({
 	-----------------------------------------------------------------------------
 	{
 		"nvim-treesitter",
-		for_cat = "treesitter", -- Matches the category in your flake
+		for_cat = "tools",
 		event = "BufReadPost",
 		load = function(name)
 			vim.cmd.packadd(name)
@@ -552,4 +552,24 @@ lze.load({
 			require("fidget").setup({})
 		end,
 	},
+	--
+	-- -----------------------------------------------------------------------------
+	-- -- NAVIGATION
+	-- -----------------------------------------------------------------------------
+	-- {
+	-- 	"flash.nvim",
+	-- 	for_cat = "tools",
+	-- 	event = "BufReadPost",
+	-- 	keys = {
+	-- 		{ "s", mode = { "n", "x", "o" }, desc = "Flash" },
+	-- 		{ "S", mode = { "n", "o", "x" }, desc = "Flash Treesitter" },
+	-- 		{ "r", mode = "o", desc = "Remote Flash" },
+	-- 		{ "R", mode = { "o", "x" }, desc = "Treesitter Search" },
+	-- 		{ "<c-s>", mode = { "c" }, desc = "Toggle Flash Search" },
+	-- 		{ "<c-space>", mode = { "n", "o", "x" }, desc = "Treesitter Incremental Selection" },
+	-- 	},
+	-- 	after = function()
+	-- 		require("flash").setup({})
+	-- 	end,
+	-- },
 })

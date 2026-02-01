@@ -54,10 +54,6 @@
 
           # 3. Plugins that load LATER (via lze)
           optionalPlugins = {
-            treesitter = with pkgs.vimPlugins; [
-              nvim-treesitter.withAllGrammars
-              nvim-treesitter-textobjects
-            ];
             lsp = with pkgs.vimPlugins; [
               nvim-lspconfig
               blink-cmp
@@ -83,6 +79,9 @@
               telescope-nvim
               telescope-fzf-native-nvim
               undotree
+              flash-nvim
+              nvim-treesitter.withAllGrammars
+              nvim-treesitter-textobjects
               # vim-sleuth
             ];
           };
@@ -108,7 +107,6 @@
             categories = {
               general = true;
               lsp = true;
-              treesitter = true;
               ui = true;
               tools = true;
               nix = true;
