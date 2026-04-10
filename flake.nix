@@ -33,6 +33,12 @@
               lua-language-server
               stylua
             ];
+            go = with pkgs; [
+              gopls # The Language Server
+              gotools # Provides 'goimports'
+              gofumpt # Stricter formatter
+              delve # Debugger (optional but recommended)
+            ];
             cpp = with pkgs; [ clang-tools ];
           };
 
@@ -111,6 +117,7 @@
               tools = true;
               nix = true;
               lua = true;
+              go = true;
               cpp = true;
               themer = true;
               colorscheme = "kanagawa";

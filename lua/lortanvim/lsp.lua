@@ -85,6 +85,25 @@ lze.load({
 			vim.lsp.enable(plugin.name)
 		end,
 	},
+	-- Go Support (Gopls)
+	{
+		"gopls",
+		enabled = nixCats("go"), -- Checks your nixCats 'go' category
+		lsp = {
+			filetypes = { "go", "gomod", "gowork", "gotmpl" },
+			settings = {
+				gopls = {
+					analyses = {
+						unusedparams = true,
+					},
+					staticcheck = true,
+					gofumpt = true, -- Sets gopls to use gofumpt for formatting
+					completeUnimported = true,
+					usePlaceholders = true,
+				},
+			},
+		},
+	},
 	-- Lua Support
 	{
 		"lazydev.nvim",
