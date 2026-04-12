@@ -34,6 +34,7 @@
               stylua
             ];
             go = with pkgs; [
+              go # Needed for the Language server
               gopls # The Language Server
               gotools # Provides 'goimports'
               gofumpt # Stricter formatter
