@@ -39,6 +39,10 @@
               gofumpt # Stricter formatter
               delve # Debugger (optional but recommended)
             ];
+            python = with pkgs; [
+              basedpyright # High-performance LSP
+              ruff # Linter and Formatter (Rust-based)
+            ];
             cpp = with pkgs; [ clang-tools ];
           };
 
@@ -118,6 +122,7 @@
               nix = true;
               lua = true;
               go = true;
+              python = true;
               cpp = true;
               themer = true;
               colorscheme = "kanagawa";

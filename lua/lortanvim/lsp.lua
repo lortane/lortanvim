@@ -85,6 +85,34 @@ lze.load({
 			vim.lsp.enable(plugin.name)
 		end,
 	},
+	-- Python Support (Basedpyright)
+	{
+		"basedpyright",
+		enabled = nixCats("python"),
+		lsp = {
+			filetypes = { "python" },
+			settings = {
+				basedpyright = {
+					analysis = {
+						autoSearchPaths = true,
+						useLibraryCodeForTypes = true,
+						diagnosticMode = "openFilesOnly",
+						typeCheckingMode = "basic", -- options: "off", "basic", "standard", "strict"
+					},
+				},
+			},
+		},
+	},
+	{
+		"ruff",
+		enabled = nixCats("python"),
+		lsp = {
+			on_attach = function(client, _)
+				-- Disable hover in favor of Basedpyright
+				client.server_capabilities.hoverProvider = false
+			end,
+		},
+	},
 	-- Go Support (Gopls)
 	{
 		"gopls",
