@@ -24,7 +24,7 @@ lze.load({
 					c = { "clang-format" },
 					nix = { "nixfmt" },
 					lua = { "stylua" },
-					go = { "goimports", "gofumpt" },
+					go = { "goimports", "gofmt" },
 					python = { "ruff_organize_imports", "ruff_format" },
 				},
 			})

@@ -37,7 +37,6 @@
               go # Needed for the Language server
               gopls # The Language Server
               gotools # Provides 'goimports'
-              gofumpt # Stricter formatter
               delve # Debugger (optional but recommended)
             ];
             python = with pkgs; [

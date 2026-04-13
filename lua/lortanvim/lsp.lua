@@ -125,7 +125,7 @@ lze.load({
 						unusedparams = true,
 					},
 					staticcheck = true,
-					gofumpt = true, -- Sets gopls to use gofumpt for formatting
+					gofumpt = false,
 					completeUnimported = true,
 					usePlaceholders = true,
 				},
