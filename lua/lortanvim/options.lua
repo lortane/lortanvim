@@ -37,6 +37,9 @@ opt.smartcase = true -- ...unless the search query contains a capital letter
 vim.g.netrw_liststyle = 0 -- Standard list view
 vim.g.netrw_banner = 0 -- Hide the massive help banner at the top of the explorer
 
+-- DIsable stock SQL autocompletion
+vim.g.loaded_sql_completion = 1
+
 -----------------------------------------------------------------------------
 -- [[ Autocommands ]]
 -- These are "Event Listeners" that run code when something happens.
