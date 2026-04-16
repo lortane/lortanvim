@@ -298,7 +298,7 @@ lze.load({
 				-- Snippet integration logic
 				snippets = {
 					preset = "luasnip",
-					active = function(filter)
+					active = function()
 						local snippet = require("luasnip")
 						if snippet.in_snippet() and not require("blink.cmp").is_visible() then
 							return true
@@ -399,7 +399,14 @@ lze.load({
 					lualine_c = {
 						{ "diagnostics", symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 " } },
 					},
-					lualine_x = { "filetype", "filename" },
+					lualine_x = {
+						"filetype",
+						{
+							"filename",
+							path = 1, -- 1 = relative path, 0 = filename only, 2 = absolute path, 3 = relative path with symbols
+							shorting_target = 40, -- optional: shorten path if longer than this
+						},
+					},
 				},
 				tabline = {
 					lualine_a = { "buffers" },
