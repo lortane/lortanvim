@@ -21,8 +21,10 @@ keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- [[ Buffer Navigation ]]
 keymap("n", "<leader><leader>[", "<cmd>bprev<CR>", { desc = "Previous buffer" })
 keymap("n", "<leader><leader>]", "<cmd>bnext<CR>", { desc = "Next buffer" })
+keymap("n", "<leader><leader>n", "<cmd>bprev<CR>", { desc = "Previous buffer" })
+keymap("n", "<leader><leader>o", "<cmd>bnext<CR>", { desc = "Next buffer" })
 keymap("n", "<leader><leader>l", "<cmd>b#<CR>", { desc = "Last buffer" })
-keymap("n", "<leader><leader>d", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
+keymap("n", "<leader><leader>q", "<cmd>bdelete<CR>", { desc = "Quit buffer" })
 
 -- [[ Clipboard Operations ]]
 keymap({ "v", "x", "n" }, "<leader>y", '"+y', { desc = "Yank to clipboard" })
