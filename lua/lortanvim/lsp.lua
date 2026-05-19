@@ -1,6 +1,13 @@
 local lze = require("lze")
 local catUtils = require("nixCatsUtils")
 
+-- Blueprint file extension
+vim.filetype.add({
+	extension = {
+		blp = "blueprint",
+	},
+})
+
 -----------------------------------------------------------------------------
 -- Performance Utilities (FT Fallback)
 -----------------------------------------------------------------------------
@@ -84,6 +91,15 @@ lze.load({
 			)
 			vim.lsp.enable(plugin.name)
 		end,
+	},
+	-- Blueprint Support (GTK4 UI)
+	{
+		"blueprint_ls",
+		for_cat = "lsp",
+		lsp = {
+			cmd = { "blueprint-compiler", "lsp" },
+			filetypes = { "blueprint" },
+		},
 	},
 	-- Python Support (Basedpyright)
 	{
